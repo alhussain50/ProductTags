@@ -1,5 +1,4 @@
 <?php
-<?php
 namespace Strativ\ProductTags\Observer;
 
 use Magento\Framework\Event\ObserverInterface;

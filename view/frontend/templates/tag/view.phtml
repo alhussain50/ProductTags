@@ -1,0 +1,35 @@
+<?php
+/**
+ * @var \Strativ\ProductTags\Block\Tag\View $block
+ */
+$products = $block->getProducts();
+$tag = $block->getTag();
+?>
+<h1><?php echo __('Products tagged with "%1"', $this->escapeHtml($tag)) ?></h1>
+<?php if ($products->getSize()): ?>
+    <ol class="products list items product-items">
+        <?php foreach ($products as $product): ?>
+            <li class="item product product-item">
+                <div class="product-item-info">
+                    <a href="<?php echo $product->getProductUrl() ?>" class="product-item-photo">
+                        <span class="product-image-container">
+                            <span class="product-image-wrapper">
+                                <img class="product-image-photo" src="<?php echo $this->helper('Magento\Catalog\Helper\Image')->init($product, 'product_page_image_small')->getUrl() ?>" alt="<?php echo $this->escapeHtml($product->getName()) ?>">
+                            </span>
+                        </span>
+                    </a>
+                    <div class="product-item-details">
+                        <strong class="product-item-name">
+                            <a class="product-item-link" href="<?php echo $product->getProductUrl() ?>">
+                                <?php echo $this->escapeHtml($product->getName()) ?>
+                            </a>
+                        </strong>
+                        <?php echo $block->getProductPrice($product) ?>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ol>
+<?php else: ?>
+    <p><?php echo __('There are no products with this tag.') ?></p>
+<?php endif; ?>

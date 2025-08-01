@@ -1,0 +1,12 @@
+{
+    "strativ_product_tags": {
+        "column": {
+            "id": true,
+            "product_id": true,
+            "tag": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

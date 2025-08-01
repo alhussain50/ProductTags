@@ -40,14 +40,20 @@ class View extends Template
     public function getProducts()
     {
         $tag = $this->getTag();
-        $collection = $this->_productCollectionFactory->create();
-        $collection->addAttributeToSelect('*');
 
-        $collection->getSelect()->join(
-            ['spt' => $collection->getTable('strativ_product_tags')],
-            'e.entity_id = spt.product_id',
-            []
-        )->where('spt.tag = ?', $tag);
+        $collection = $this->_productCollectionFactory->create();
+
+        // First, get the product IDs that have the specified tag.
+        $connection = $collection->getConnection();
+        $select = $connection->select()
+            ->from($collection->getTable('strativ_product_tags'), 'product_id')
+            ->where('tag = ?', $tag);
+        $productIds = $connection->fetchCol($select);
+
+        // If no products have the tag, we need to return an empty collection.
+        // Filtering by an empty 'in' array is handled correctly by Magento.
+        $collection->addAttributeToSelect('*');
+        $collection->addFieldToFilter('entity_id', ['in' => $productIds]);
 
         return $collection;
     }

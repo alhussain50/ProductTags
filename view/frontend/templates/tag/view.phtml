@@ -3,9 +3,11 @@
  * @var \Strativ\ProductTags\Block\Tag\View $block
  */
 $products = $block->getProducts();
+$products->load();
 $tag = $block->getTag();
 ?>
 <h1><?php echo __('Products tagged with "%1"', $this->escapeHtml($tag)) ?></h1>
+
 <?php if ($products->getSize()): ?>
     <ol class="products list items product-items">
         <?php foreach ($products as $product): ?>

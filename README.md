@@ -78,19 +78,20 @@ I faced a few other challenges during development as well. At the time, I was us
 
 ## Screenshots
 
-> **Note:** Screenshots will be added here to showcase the module's functionality.
-
 ### Product Edit Form with Tags
-![Product Edit Form](_assets/screenshots/product-edit-form.png)
+![Product Edit Form](_assets/screenshots/edit.png)
 
 ### Product Detail Page with Tags
-![Product Detail Page](_assets/screenshots/product-detail-page.png)
+![Product Detail Page](_assets/screenshots/pdp.png)
 
 ### Tag View Page
-![Tag View Page](_assets/screenshots/tag-view-page.png)
+![Tag View Page](_assets/screenshots/tag.png)
+
+### Admin Menu for Product Tags
+![Menu](_assets/screenshots/menu.png)
 
 ### Admin Grid for Product Tags
-![Admin Grid](_assets/screenshots/admin-grid.png)
+![Admin Grid](_assets/screenshots/grid.png)
 
 ---
 

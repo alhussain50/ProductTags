@@ -79,7 +79,7 @@ I faced a few other challenges during development as well. At the time, I was us
 ## Screenshots
 
 ### Product Edit Form with Tags
-![Product Edit Form](_assets/screenshots/edit.png)
+![Product Edit Form](_assets/screenshots/field.png)
 
 ### Product Detail Page with Tags
 ![Product Detail Page](_assets/screenshots/pdp.png)

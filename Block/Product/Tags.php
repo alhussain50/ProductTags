@@ -4,7 +4,7 @@ namespace Strativ\ProductTags\Block\Product;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Template;
-use Magento\Framework\App\ResourceConnection;
+use Strativ\ProductTags\Api\Product\TagRepositoryInterface;
 
 class Tags extends Template
 {
@@ -19,24 +19,24 @@ class Tags extends Template
     protected $_registry;
 
     /**
-     * @var ResourceConnection
+     * @var TagRepositoryInterface
      */
-    protected $_resource;
+    protected $tagRepository;
 
     /**
      * @param Template\Context $context
      * @param Registry $registry
-     * @param ResourceConnection $resource
+     * @param TagRepositoryInterface $tagRepository
      * @param array $data
      */
     public function __construct(
         Template\Context $context,
         Registry $registry,
-        ResourceConnection $resource,
+        TagRepositoryInterface $tagRepository,
         array $data = []
     ) {
         $this->_registry = $registry;
-        $this->_resource = $resource;
+        $this->tagRepository = $tagRepository;
         parent::__construct($context, $data);
     }
 
@@ -61,13 +61,6 @@ class Tags extends Template
             return [];
         }
 
-        $connection = $this->_resource->getConnection();
-        $tableName = $this->_resource->getTableName('strativ_product_tags');
-
-        $select = $connection->select()
-            ->from($tableName, 'tag')
-            ->where('product_id = ?', $product->getId());
-
-        return $connection->fetchCol($select);
+        return $this->tagRepository->getTagsByProductId($product->getId());
     }
 } 

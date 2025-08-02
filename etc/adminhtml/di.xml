@@ -13,4 +13,9 @@
             <argument name="resourceModel" xsi:type="string">Strativ\ProductTags\Model\ResourceModel\Tag</argument>
         </arguments>
     </virtualType>
+    
+    <!-- Plugin to load tags data in product form -->
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider">
+        <plugin name="strativ_load_tags_data" type="Strativ\ProductTags\Plugin\ProductDataProviderPlugin" sortOrder="10"/>
+    </type>
 </config>

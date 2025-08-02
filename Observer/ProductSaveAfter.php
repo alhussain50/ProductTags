@@ -26,16 +26,38 @@ class ProductSaveAfter implements ObserverInterface
             // Remove old tags for this product
             $connection->delete($table, ['product_id = ?' => $product->getId()]);
 
-            // Insert new tags
-            $tagsArray = array_map('trim', explode(',', $tags));
-            foreach ($tagsArray as $tag) {
-                if ($tag !== '') {
-                    $connection->insert($table, [
-                        'product_id' => $product->getId(),
-                        'tag' => $tag
-                    ]);
-                }
+            // Process and validate tags
+            $validTags = $this->validateAndSanitizeTags($tags);
+            
+            // Insert valid tags
+            foreach ($validTags as $tag) {
+                $connection->insert($table, [
+                    'product_id' => $product->getId(),
+                    'tag' => $tag
+                ]);
             }
         }
+    }
+
+    /**
+     * Basic tag validation
+     *
+     * @param string $tags
+     * @return array
+     */
+    private function validateAndSanitizeTags($tags)
+    {
+        $tagsArray = explode(',', $tags);
+        $validTags = [];
+
+        foreach ($tagsArray as $tag) {
+            $tag = trim(strip_tags($tag)); // Trim and remove HTML
+            
+            if ($tag !== '' && strlen($tag) <= 50) {
+                $validTags[] = $tag;
+            }
+        }
+
+        return array_unique($validTags);
     }
 }

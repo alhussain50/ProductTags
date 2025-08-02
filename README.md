@@ -93,7 +93,7 @@ Open your terminal or command prompt, navigate to your Magento root directory, a
 
 
 ```bash
-php bin/magento module:enable Alhussain_ProductTags
+php bin/magento module:enable Strativ_ProductTags
 php bin/magento setup:upgrade
 php bin/magento setup:di:compile
 php bin/magento setup:static-content:deploy -f

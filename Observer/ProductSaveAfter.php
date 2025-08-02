@@ -77,8 +77,8 @@ class ProductSaveAfter implements ObserverInterface
                 continue;
             }
             
-            if (strlen($tag) > 5) {
-                $rejectedTags[$tag] = 'Too long (max 5 characters)';
+            if (strlen($tag) > 10) {
+                $rejectedTags[$tag] = 'Too long (max 10 characters)';
                 continue;
             }
             

@@ -17,7 +17,7 @@ class ProductSaveAfter implements ObserverInterface
     public function execute(Observer $observer)
     {
         $product = $observer->getEvent()->getProduct();
-        $tags = $product->getData('strativ_tags'); // Field name from the form
+        $tags = $product->getData('strativ_tags');
 
         if ($tags !== null) {
             $connection = $this->resource->getConnection();
@@ -51,9 +51,10 @@ class ProductSaveAfter implements ObserverInterface
         $validTags = [];
 
         foreach ($tagsArray as $tag) {
-            $tag = trim(strip_tags($tag)); // Trim and remove HTML
+            $tag = trim(strip_tags($tag));
             
-            if ($tag !== '' && strlen($tag) <= 50) {
+            // Accept only strings (letters, numbers, spaces, hyphens, underscores) but not numbers-only
+            if ($tag !== '' && strlen($tag) <= 50 && preg_match('/^[a-zA-Z0-9\s\-_]+$/', $tag) && !preg_match('/^[0-9\s\-_]+$/', $tag)) {
                 $validTags[] = $tag;
             }
         }

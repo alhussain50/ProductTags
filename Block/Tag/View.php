@@ -51,7 +51,7 @@ class View extends Template
         $tag = $this->getTag();
         $collection = $this->_productCollectionFactory->create();
 
-        // Get the product IDs that have the specified tag using repository
+        // Get the product IDs with the specified tag
         $productIds = $this->productRepository->getProductIdsByTag($tag);
 
         $collection->addAttributeToSelect('*');

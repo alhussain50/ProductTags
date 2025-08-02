@@ -76,6 +76,24 @@ I faced a few other challenges during development as well. At the time, I was us
 
 ---
 
+## Screenshots
+
+> **Note:** Screenshots will be added here to showcase the module's functionality.
+
+### Product Edit Form with Tags
+![Product Edit Form](_assets/screenshots/product-edit-form.png)
+
+### Product Detail Page with Tags
+![Product Detail Page](_assets/screenshots/product-detail-page.png)
+
+### Tag View Page
+![Tag View Page](_assets/screenshots/tag-view-page.png)
+
+### Admin Grid for Product Tags
+![Admin Grid](_assets/screenshots/admin-grid.png)
+
+---
+
 ## Installation Steps
 
 ### 1. Download the Module
